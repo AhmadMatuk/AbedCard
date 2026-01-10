@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#4F364C">
     <title>Student Card</title>
     <style>
         * {
@@ -47,6 +48,16 @@
             font-size: 26px;
             cursor: pointer;
             font-weight: 300;
+        }
+
+        /* New "He" Text Style */
+        .lang-text {
+            position: absolute;
+            right: 20px;
+            color: white;
+            font-size: 18px;
+            font-weight: 400;
+            cursor: pointer;
         }
 
         /* --- CARD CONTAINER --- */
@@ -98,8 +109,8 @@
 
         .value-name {
             color: white;
-            font-size: 21px;
-            font-weight: 400; /* Normal weight */
+            font-size: 19px; /* Reduced size as requested */
+            font-weight: 400; 
             margin-bottom: 18px;
             letter-spacing: 0.3px;
         }
@@ -301,7 +312,7 @@
     <div class="top-bar">
         <div class="back-icon">&#8592;</div>
         <div class="top-bar-title">Student Card</div>
-    </div>
+        <div class="lang-text">He</div> </div>
 
     <div class="card-container">
         
