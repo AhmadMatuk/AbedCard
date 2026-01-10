@@ -33,43 +33,33 @@ body {
   margin: 0;
 }
 
-/* ✅ Paint ONLY the top safe-area purple (fixes upper bar without making bottom purple) */
-.statusbar-bg {
+.top-bg {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: env(safe-area-inset-top);
+  height: calc(env(safe-area-inset-top) + 100px); /* safe area + top-bar height */
   background: #4F364C;
-  z-index: 9999;
+  z-index: 1;
 }
 
 /* --- TOP BAR --- */
 .top-bar {
   width: 100%;
   height: 100px;
-  background-color: #4F364C;
+  background: transparent; /* was #4F364C */
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  z-index: 10000;
+  position: sticky;
+  top: 0;
+  z-index: 2;
 
   padding-top: max(45px, env(safe-area-inset-top));
 
-  /* separator/shadow line like the app */
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* ❌ remove this if you use .statusbar-bg (otherwise it's redundant) */
-.top-bar::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 0;
-}
 
 /* keep your title/icons as-is */
 .top-bar-title {
@@ -353,7 +343,7 @@ body {
 </head>
 
 <body>
-  <div class="statusbar-bg"></div>
+  <div class="top-bg"></div>
 
   <div class="top-bar">
     <div class="back-icon">&#8592;</div>
