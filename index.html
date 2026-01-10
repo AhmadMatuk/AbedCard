@@ -19,12 +19,7 @@
         }
 
         body {
-            /* FIX FOR WHITE STATUS BAR: */
-            /* This paints the top 150px PURPLE, and the rest GREY. */
-            /* This ensures the area behind the battery/wifi is purple. */
-            background: linear-gradient(to bottom, #4F364C 0%, #4F364C 150px, #F5F5F5 150px, #F5F5F5 100%);
-            background-attachment: fixed; /* Keeps the background in place */
-            
+            background-color: #F5F5F5;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -49,7 +44,16 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
         }
 
-        /* Removed the ::before pseudo-element as the body gradient handles it better now */
+        .top-bar::before {
+            content: '';
+            position: absolute;
+            top: -100vh; 
+            left: 0;
+            width: 100%;
+            height: 100vh; 
+            background-color: #4F364C; 
+            z-index: -1; 
+        }
 
         .top-bar-title {
             color: white;
@@ -91,7 +95,8 @@
 
         /* --- HEADER (Green with Shadow Gradient) --- */
         .header-section {
-            /* Gradient: Starts Teal -> Ends Darker Teal on the right */
+            /* CHANGED: Replaced solid color with a Gradient */
+            /* Starts Teal (#2A8A85) -> Ends Darker Teal (#15504c) on the right */
             background: linear-gradient(to right, #2A8A85 20%, #15504c 100%);
             
             height: 85px;
@@ -171,7 +176,7 @@
             top: 185px;
             right: 24px;
             width: 115px;
-            /* Border is WHITE */
+            /* CHANGED: Border color is now WHITE */
             border: 2px solid white; 
             padding: 5px 0;
             text-align: center;
