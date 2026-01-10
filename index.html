@@ -6,7 +6,7 @@
     
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#4F364C">
+    <meta name="theme-color" content="#4B3850">
     
     <title>Student Card</title>
     <style>
@@ -19,45 +19,42 @@
         }
 
         body {
-            /* FIX: Set main background to GREY so the bottom is grey */
             background-color: #F5F5F5;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            /* Ensure iOS adds padding for bottom safe area so content isn't cut off */
             padding-bottom: env(safe-area-inset-bottom);
         }
 
         /* --- TOP BAR --- */
         .top-bar {
             width: 100%;
-            /* Taller height to sit behind the status bar */
             height: 100px; 
-            background-color: #4F364C;
+            /* MODIFIED: Darker purple to match your screenshot */
+            background-color: #4B3850; 
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             z-index: 10;
-            /* Padding to push text down below the status bar icons */
             padding-top: 45px;
-            /* Ensure top padding accounts for different notches */
             padding-top: max(45px, env(safe-area-inset-top));
+
+            /* MODIFIED: This is the "line under the upper bar" */
+            /* Stronger shadow to create the dark line effect */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
         }
 
-        /* FIX: This creates a giant purple block ABOVE the screen. 
-           When you pull down (overscroll), you see this purple block. */
         .top-bar::before {
             content: '';
             position: absolute;
-            top: -100vh; /* Position way above the screen */
+            top: -100vh; 
             left: 0;
             width: 100%;
-            height: 100vh; /* Make it tall */
-            background-color: #4F364C; /* Purple */
-            z-index: -1; /* Put it behind the bar content */
+            height: 100vh; 
+            background-color: #4B3850; /* Match top bar color */
+            z-index: -1; 
         }
 
         .top-bar-title {
@@ -69,7 +66,6 @@
         .back-icon {
             position: absolute;
             left: 20px;
-            /* Adjust position based on padding */
             top: max(55px, calc(env(safe-area-inset-top) + 10px));
             color: white;
             font-size: 26px;
@@ -80,7 +76,6 @@
         .lang-text {
             position: absolute;
             right: 20px;
-             /* Adjust position based on padding */
             top: max(60px, calc(env(safe-area-inset-top) + 15px));
             color: white;
             font-size: 18px;
@@ -92,24 +87,30 @@
         .card-container {
             width: 90%;
             max-width: 380px;
-            background-color: white;
+            /* MODIFIED: Removed white background */
+            /* MODIFIED: Added the SPECIAL GRADIENT (Left: Lighter, Right: Darker) */
+            background: linear-gradient(to right, #568E86, #3E656B);
+            
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 10px 15px -5px rgba(0, 0, 0, 0.2);
+            /* MODIFIED: Adjusted shadow for depth */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 10px 15px -5px rgba(0, 0, 0, 0.3);
             margin-top: 25px;
             position: relative;
         }
 
-        /* --- HEADER (Green) --- */
+        /* --- HEADER (Now Transparent) --- */
         .header-section {
-            background-color: #2A8A85;
+            /* MODIFIED: Removed Green background so gradient shows */
+            background-color: transparent; 
             height: 85px;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             z-index: 5;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3); 
+            /* Optional: kept shadow or removed depending on preference. I reduced it to blend better */
+            box-shadow: none; 
         }
 
         .uni-logo-white {
@@ -117,9 +118,10 @@
             filter: brightness(0) invert(1);
         }
 
-        /* --- BODY (Purple) --- */
+        /* --- BODY (Now Transparent) --- */
         .body-section {
-            background-color: #4F364C;
+            /* MODIFIED: Removed Purple background so gradient shows */
+            background-color: transparent; 
             padding: 24px;
             position: relative;
             height: 295px;
@@ -131,13 +133,13 @@
             font-size: 13px;
             margin-bottom: 4px;
             font-weight: 400;
-            opacity: 0.95;
+            opacity: 0.8; /* Slightly lowered opacity for better contrast against gradient */
         }
 
         .value-name {
             color: white;
             font-size: 19px; 
-            font-weight: 400; 
+            font-weight: 500; /* Increased weight slightly for readability on gradient */
             margin-bottom: 18px;
             letter-spacing: 0.3px;
         }
@@ -165,6 +167,7 @@
             width: 115px;
             height: 145px;
             box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+            background-color: #ddd; /* Placeholder color if img fails */
         }
 
         .profile-img {
@@ -207,7 +210,7 @@
             width: auto;
         }
 
-        /* --- FOOTER (Barcode/QR) --- */
+        /* --- FOOTER (Barcode/QR) - Kept White --- */
         .footer-section {
             background-color: white;
             padding: 15px 20px;
@@ -278,7 +281,6 @@
             object-fit: contain;
         }
 
-        /* Utility class to hide elements */
         .hidden {
             display: none !important;
         }
@@ -289,7 +291,6 @@
             text-align: center;
         }
 
-        /* Container for the sliding numbers */
         .pagination {
             display: flex;
             gap: 20px;
@@ -299,31 +300,29 @@
             justify-content: center;
             margin-top: 15px;
             margin-bottom: 12px;
-            height: 28px; /* Fixed height for animation window */
-            overflow: hidden; /* Hide numbers sliding out */
+            height: 28px; 
+            overflow: hidden; 
         }
 
         .colon {
             margin-top: 2px;
         }
 
-        /* The scrolling digit container */
         .digit-wrapper {
             display: flex;
             flex-direction: column;
             text-align: center;
-            transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1); /* "Snap" effect */
+            transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1); 
         }
 
         .digit {
-            height: 28px; /* Must match parent height */
+            height: 28px; 
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
         }
 
-        /* Monospace Date Font */
         .live-date {
             color: #4F364C;
             font-size: 26px;
@@ -411,11 +410,9 @@
             const qrcodeView = document.getElementById('view-qrcode');
             
             if (barcodeView.classList.contains('hidden')) {
-                // Show Barcode
                 barcodeView.classList.remove('hidden');
                 qrcodeView.classList.add('hidden');
             } else {
-                // Show QR Code
                 barcodeView.classList.add('hidden');
                 qrcodeView.classList.remove('hidden');
             }
@@ -433,7 +430,6 @@
             
             const newDigits = [h[0], h[1], m[0], m[1], s[0], s[1]];
             
-            // Loop through each digit (1 to 6)
             for (let i = 0; i < 6; i++) {
                 if (newDigits[i] !== oldDigits[i]) {
                     animateDigit(i + 1, newDigits[i]);
@@ -442,42 +438,29 @@
             
             oldDigits = newDigits;
 
-            // Update Date (Monospace)
             const day = String(now.getDate()).padStart(2, '0');
             const month = String(now.getMonth() + 1).padStart(2, '0');
             const year = now.getFullYear();
             document.getElementById('dateDisplay').innerText = `${day}-${month}-${year}`;
         }
 
-        // Flip Animation function
         function animateDigit(idIndex, newValue) {
             const wrapper = document.getElementById(`d${idIndex}`);
-            
-            // Create a new div for the new number
             const newDiv = document.createElement('div');
             newDiv.className = 'digit';
             newDiv.innerText = newValue;
-            
-            // Append it to the bottom
             wrapper.appendChild(newDiv);
-
-            // Slide up
             wrapper.style.transform = 'translateY(-28px)';
-
-            // Reset after animation
             setTimeout(() => {
-                wrapper.style.transition = 'none'; // Stop animation
-                wrapper.innerHTML = ''; // Clear numbers
-                wrapper.appendChild(newDiv); // Keep new one
-                wrapper.style.transform = 'translateY(0)'; // Reset position
-                
-                // Force reflow
+                wrapper.style.transition = 'none';
+                wrapper.innerHTML = '';
+                wrapper.appendChild(newDiv);
+                wrapper.style.transform = 'translateY(0)';
                 void wrapper.offsetWidth; 
-                wrapper.style.transition = 'transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1)'; // Restore animation
+                wrapper.style.transition = 'transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1)';
             }, 400); 
         }
 
-        // Start Clock
         updateClock();
         setInterval(updateClock, 1000);
     </script>
