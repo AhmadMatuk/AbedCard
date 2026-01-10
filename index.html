@@ -6,7 +6,7 @@
     
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#4B3850">
+    <meta name="theme-color" content="#4F364C">
     
     <title>Student Card</title>
     <style>
@@ -31,8 +31,7 @@
         .top-bar {
             width: 100%;
             height: 100px; 
-            /* MODIFIED: Darker purple to match your screenshot */
-            background-color: #4B3850; 
+            background-color: #4F364C; /* Dark Purple */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -40,10 +39,9 @@
             z-index: 10;
             padding-top: 45px;
             padding-top: max(45px, env(safe-area-inset-top));
-
-            /* MODIFIED: This is the "line under the upper bar" */
-            /* Stronger shadow to create the dark line effect */
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+            
+            /* THIS IS THE SHADOW LINE UNDER THE TOP BAR */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
         }
 
         .top-bar::before {
@@ -53,7 +51,7 @@
             left: 0;
             width: 100%;
             height: 100vh; 
-            background-color: #4B3850; /* Match top bar color */
+            background-color: #4F364C; 
             z-index: -1; 
         }
 
@@ -87,30 +85,24 @@
         .card-container {
             width: 90%;
             max-width: 380px;
-            /* MODIFIED: Removed white background */
-            /* MODIFIED: Added the SPECIAL GRADIENT (Left: Lighter, Right: Darker) */
-            background: linear-gradient(to right, #568E86, #3E656B);
-            
+            background-color: white;
             border-radius: 20px;
             overflow: hidden;
-            /* MODIFIED: Adjusted shadow for depth */
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 10px 15px -5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 10px 15px -5px rgba(0, 0, 0, 0.2);
             margin-top: 25px;
             position: relative;
         }
 
-        /* --- HEADER (Now Transparent) --- */
+        /* --- HEADER (Teal Color) --- */
         .header-section {
-            /* MODIFIED: Removed Green background so gradient shows */
-            background-color: transparent; 
+            background-color: #2A8A85; /* CORRECT: Teal color for top part */
             height: 85px;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             z-index: 5;
-            /* Optional: kept shadow or removed depending on preference. I reduced it to blend better */
-            box-shadow: none; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
         }
 
         .uni-logo-white {
@@ -118,10 +110,9 @@
             filter: brightness(0) invert(1);
         }
 
-        /* --- BODY (Now Transparent) --- */
+        /* --- BODY (Dark Purple Color) --- */
         .body-section {
-            /* MODIFIED: Removed Purple background so gradient shows */
-            background-color: transparent; 
+            background-color: #4F364C; /* CORRECT: Dark Purple for main part */
             padding: 24px;
             position: relative;
             height: 295px;
@@ -133,13 +124,13 @@
             font-size: 13px;
             margin-bottom: 4px;
             font-weight: 400;
-            opacity: 0.8; /* Slightly lowered opacity for better contrast against gradient */
+            opacity: 0.95;
         }
 
         .value-name {
             color: white;
             font-size: 19px; 
-            font-weight: 500; /* Increased weight slightly for readability on gradient */
+            font-weight: 400; 
             margin-bottom: 18px;
             letter-spacing: 0.3px;
         }
@@ -167,7 +158,6 @@
             width: 115px;
             height: 145px;
             box-shadow: 0 3px 6px rgba(0,0,0,0.3);
-            background-color: #ddd; /* Placeholder color if img fails */
         }
 
         .profile-img {
@@ -183,7 +173,8 @@
             top: 185px;
             right: 24px;
             width: 115px;
-            border: 2px solid white;
+            /* CORRECT: Border is now the teal color, not white */
+            border: 2px solid #2A8A85; 
             padding: 5px 0;
             text-align: center;
         }
@@ -210,7 +201,7 @@
             width: auto;
         }
 
-        /* --- FOOTER (Barcode/QR) - Kept White --- */
+        /* --- FOOTER (Barcode/QR) --- */
         .footer-section {
             background-color: white;
             padding: 15px 20px;
