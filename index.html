@@ -2,8 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#4F364C">
+    
     <title>Student Card</title>
     <style>
         * {
@@ -15,24 +19,38 @@
         }
 
         body {
-            background-color: #F5F5F5;
+            /* Changed to Purple so the 'bounce' effect at the top looks native */
+            background-color: #4F364C; 
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
         }
 
+        /* This wrapper handles the grey background for the rest of the screen */
+        .main-content-wrapper {
+            background-color: #F5F5F5;
+            width: 100%;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         /* --- TOP BAR --- */
         .top-bar {
             width: 100%;
-            height: 60px;
+            /* Increased height to go BEHIND the battery status */
+            height: 100px; 
             background-color: #4F364C;
             display: flex;
-            align-items: center;
+            align-items: center; /* This vertically centers the text in the REMAINING space */
             justify-content: center;
             position: relative;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             z-index: 10;
+            /* Pushes text down so it's not covered by the battery/time */
+            padding-top: 45px; 
         }
 
         .top-bar-title {
@@ -44,16 +62,19 @@
         .back-icon {
             position: absolute;
             left: 20px;
+            /* Adjusted for the new padding */
+            top: 55px; 
             color: white;
             font-size: 26px;
             cursor: pointer;
             font-weight: 300;
         }
 
-        /* New "He" Text Style */
         .lang-text {
             position: absolute;
             right: 20px;
+            /* Adjusted for the new padding */
+            top: 60px;
             color: white;
             font-size: 18px;
             font-weight: 400;
@@ -67,7 +88,6 @@
             background-color: white;
             border-radius: 20px;
             overflow: hidden;
-            /* Floating Shadow */
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 10px 15px -5px rgba(0, 0, 0, 0.2);
             margin-top: 25px;
             position: relative;
@@ -109,7 +129,7 @@
 
         .value-name {
             color: white;
-            font-size: 19px; /* Reduced size as requested */
+            font-size: 19px; 
             font-weight: 400; 
             margin-bottom: 18px;
             letter-spacing: 0.3px;
@@ -312,71 +332,74 @@
     <div class="top-bar">
         <div class="back-icon">&#8592;</div>
         <div class="top-bar-title">Student Card</div>
-        <div class="lang-text">He</div> </div>
+        <div class="lang-text">He</div>
+    </div>
 
-    <div class="card-container">
-        
-        <div class="header-section">
-            <img src="logo_main.png" class="uni-logo-white" alt="Hebrew U Logo">
-        </div>
+    <div class="main-content-wrapper">
 
-        <div class="body-section">
-            <div class="label">Student Name</div>
-            <div class="value-name">Abdelrahman Matuk</div>
-
-            <div class="label">Academic Institution</div>
-            <div class="value-inst">The Hebrew<br>University of<br>Jerusalem</div>
-
-            <div class="label">ID</div>
-            <div class="value-id">213979057</div>
-
-            <div class="photo-container">
-                <img src="photo.JPG" class="profile-img" alt="Student Photo">
-            </div>
-
-            <div class="year-box">
-                <div class="year-text-hebrew">תשפ"ו</div>
-                <div class="year-text-english">2025-2026</div>
-            </div>
-
-            <img src="logo_union.png" class="union-logo" alt="Student Union Logo">
-        </div>
-
-        <div class="footer-section">
-            <div class="nav-arrow arrow-left" onclick="toggleView()">&#8249;</div>
+        <div class="card-container">
             
-            <div id="view-barcode" class="view-content">
-                <div class="barcode"></div>
-                <div class="id-subtext">213979057</div>
+            <div class="header-section">
+                <img src="logo_main.png" class="uni-logo-white" alt="Hebrew U Logo">
             </div>
 
-            <div id="view-qrcode" class="view-content hidden">
-                <a href="https://www.mobitti.com/web_client/mobile-app/studentinfo.html?token=c00451d2-7676-4fcf-b491-00b3f035244b&inapp=0&lang=en&theme=75&isTestServer=0" target="_blank">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.mobitti.com/web_client/mobile-app/studentinfo.html?token=c00451d2-7676-4fcf-b491-00b3f035244b&inapp=0&lang=en&theme=75&isTestServer=0" class="qr-image" alt="QR Code">
-                </a>
+            <div class="body-section">
+                <div class="label">Student Name</div>
+                <div class="value-name">Abdelrahman Matuk</div>
+
+                <div class="label">Academic Institution</div>
+                <div class="value-inst">The Hebrew<br>University of<br>Jerusalem</div>
+
+                <div class="label">ID</div>
+                <div class="value-id">213979057</div>
+
+                <div class="photo-container">
+                    <img src="photo.JPG" class="profile-img" alt="Student Photo">
+                </div>
+
+                <div class="year-box">
+                    <div class="year-text-hebrew">תשפ"ו</div>
+                    <div class="year-text-english">2025-2026</div>
+                </div>
+
+                <img src="logo_union.png" class="union-logo" alt="Student Union Logo">
             </div>
 
-            <div class="nav-arrow arrow-right" onclick="toggleView()">&#8250;</div>
+            <div class="footer-section">
+                <div class="nav-arrow arrow-left" onclick="toggleView()">&#8249;</div>
+                
+                <div id="view-barcode" class="view-content">
+                    <div class="barcode"></div>
+                    <div class="id-subtext">213979057</div>
+                </div>
+
+                <div id="view-qrcode" class="view-content hidden">
+                    <a href="https://www.mobitti.com/web_client/mobile-app/studentinfo.html?token=c00451d2-7676-4fcf-b491-00b3f035244b&inapp=0&lang=en&theme=75&isTestServer=0" target="_blank">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.mobitti.com/web_client/mobile-app/studentinfo.html?token=c00451d2-7676-4fcf-b491-00b3f035244b&inapp=0&lang=en&theme=75&isTestServer=0" class="qr-image" alt="QR Code">
+                    </a>
+                </div>
+
+                <div class="nav-arrow arrow-right" onclick="toggleView()">&#8250;</div>
+            </div>
+
         </div>
 
-    </div>
+        <div class="pagination">
+            <div class="digit-wrapper" id="d1"><div class="digit">0</div></div>
+            <div class="digit-wrapper" id="d2"><div class="digit">0</div></div>
+            <span class="colon">:</span>
+            <div class="digit-wrapper" id="d3"><div class="digit">0</div></div>
+            <div class="digit-wrapper" id="d4"><div class="digit">0</div></div>
+            <span class="colon">:</span>
+            <div class="digit-wrapper" id="d5"><div class="digit">0</div></div>
+            <div class="digit-wrapper" id="d6"><div class="digit">0</div></div>
+        </div>
 
-    <div class="pagination">
-        <div class="digit-wrapper" id="d1"><div class="digit">0</div></div>
-        <div class="digit-wrapper" id="d2"><div class="digit">0</div></div>
-        <span class="colon">:</span>
-        <div class="digit-wrapper" id="d3"><div class="digit">0</div></div>
-        <div class="digit-wrapper" id="d4"><div class="digit">0</div></div>
-        <span class="colon">:</span>
-        <div class="digit-wrapper" id="d5"><div class="digit">0</div></div>
-        <div class="digit-wrapper" id="d6"><div class="digit">0</div></div>
-    </div>
-
-    <div class="live-clock-container">
-        <div class="live-date" id="dateDisplay">09-01-2026</div>
-    </div>
-
-    <script>
+        <div class="live-clock-container">
+            <div class="live-date" id="dateDisplay">09-01-2026</div>
+        </div>
+    
+    </div> <script>
         // --- TOGGLE LOGIC ---
         function toggleView() {
             const barcodeView = document.getElementById('view-barcode');
