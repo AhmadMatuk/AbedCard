@@ -20,83 +20,95 @@
     }
 
     /* ✅ IMPORTANT: make the whole page purple so the iOS safe-area/status-bar is purple */
-    html {
-      background-color: #4F364C;
-    }
+  html {
+  background: #F5F5F5;
+}
 
-    body {
-      background-color: #F5F5F5;  /* was #F5F5F5 */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
+body {
+  background-color: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
 
-    /* --- TOP BAR --- */
-    .top-bar {
-      width: 100%;
-      height: 100px;
-      background-color: #4F364C;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      z-index: 10;
+/* ✅ Paint ONLY the top safe-area purple (fixes upper bar without making bottom purple) */
+.statusbar-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: env(safe-area-inset-top);
+  background: #4F364C;
+  z-index: 9999;
+}
 
-      padding-top: 45px;
-      padding-top: max(45px, env(safe-area-inset-top));
+/* --- TOP BAR --- */
+.top-bar {
+  width: 100%;
+  height: 100px;
+  background-color: #4F364C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10000;
 
-      /* separator/shadow line like the app */
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-    }
+  padding-top: max(45px, env(safe-area-inset-top));
 
-    .top-bar::before {
-      content: "";
-      position: absolute;
-      top: -100vh;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background-color: #4F364C;
-      z-index: -1;
-    }
+  /* separator/shadow line like the app */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
 
-    .top-bar-title {
-      color: white;
-      font-size: 19px;
-      font-weight: 500;
-    }
+/* ❌ remove this if you use .statusbar-bg (otherwise it's redundant) */
+.top-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+}
 
-    .back-icon {
-      position: absolute;
-      left: 20px;
-      top: max(55px, calc(env(safe-area-inset-top) + 10px));
-      color: white;
-      font-size: 26px;
-      cursor: pointer;
-      font-weight: 300;
-    }
+/* keep your title/icons as-is */
+.top-bar-title {
+  color: white;
+  font-size: 19px;
+  font-weight: 500;
+}
 
-    .lang-text {
-      position: absolute;
-      right: 20px;
-      top: max(60px, calc(env(safe-area-inset-top) + 15px));
-      color: white;
-      font-size: 18px;
-      font-weight: 400;
-      cursor: pointer;
-    }
+.back-icon {
+  position: absolute;
+  left: 20px;
+  top: max(55px, calc(env(safe-area-inset-top) + 10px));
+  color: white;
+  font-size: 26px;
+  cursor: pointer;
+  font-weight: 300;
+}
 
-    /* ✅ NEW: everything below the top-bar is the light gray area */
-    .content-area {
-      width: 100%;
-      background-color: #F5F5F5;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: calc(100vh - 100px); /* optional */
-      padding-bottom: env(safe-area-inset-bottom);
-    }
+.lang-text {
+  position: absolute;
+  right: 20px;
+  top: max(60px, calc(env(safe-area-inset-top) + 15px));
+  color: white;
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+/* ✅ content stays gray, and IMPORTANT: no safe-area bottom padding */
+.content-area {
+  width: 100%;
+  background-color: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 100px);
+  padding-bottom: 0; /* was env(safe-area-inset-bottom) */
+}
+
 
     /* --- CARD CONTAINER --- */
     .card-container {
@@ -341,6 +353,7 @@
 </head>
 
 <body>
+  <div class="statusbar-bg"></div>
 
   <div class="top-bar">
     <div class="back-icon">&#8592;</div>
