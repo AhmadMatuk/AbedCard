@@ -356,20 +356,27 @@ body {
 }
 
 /* DATE ROW (e.g., 09-01-2026) */
-.live-date{
+.live-date {
   color: #4F364C;
 
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  /* EXACT iOS system font used by the app */
+  font-family: -apple-system, system-ui, BlinkMacSystemFont;
+
   font-size: 24px;
-  font-weight: 700;
-  line-height: 1;
+  font-weight: 600;              /* NOT 700 */
+  line-height: 1.1;
 
-  /* KEY: makes digits line up like the original app */
-  font-variant-numeric: tabular-nums;
-  font-feature-settings: "tnum" 1, "lnum" 1;
+  /* CRITICAL: number shaping */
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "lnum" 1, "tnum" 1;
 
-  letter-spacing: 0.06em;  /* subtle iOS-like tracking */
+  /* ORIGINAL HAS ALMOST NO TRACKING */
+  letter-spacing: 0.02em;
+
+  /* prevents browser from faking bold/italic */
+  font-synthesis: none;
 }
+
 
 
   </style>
