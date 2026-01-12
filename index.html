@@ -356,23 +356,24 @@ body {
 }
 
 /* DATE ROW (e.g., 09-01-2026) */
-.live-date {
-  color: #4F364C;
+.live-date{
+  color:#4F364C;
 
-  /* THIS is the key difference */
-  font-family: -apple-system, "SF Pro Text", system-ui;
-
-  font-size: 24px;
-  font-weight: 600;
+  font-family: -apple-system, system-ui;
+  font-size: 20px;       /* smaller triggers Text-like glyphs */
+  font-weight: 700;
   line-height: 1.1;
 
-  /* number shaping exactly like iOS apps */
   font-variant-numeric: lining-nums tabular-nums;
   font-feature-settings: "lnum" 1, "tnum" 1;
 
-  letter-spacing: 0.01em;   /* almost none */
-  font-synthesis: none;    /* prevents fake bold */
+  transform: scale(1.18);        /* bring it back to the same visual size */
+  transform-origin: center top;
+
+  letter-spacing: 0.02em;
+  font-synthesis: none;
 }
+
 
 
 
