@@ -358,11 +358,19 @@ body {
 /* DATE ROW (e.g., 09-01-2026) */
 .live-date{
   color: #4F364C;
-  font-size: 20px;           /* smaller than your current */
-  font-weight: 600;          /* not heavy bold */
-  letter-spacing: 0.8px;     /* subtle like original */
+
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+
+  /* KEY: makes digits line up like the original app */
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+
+  letter-spacing: 0.06em;  /* subtle iOS-like tracking */
 }
+
 
   </style>
 </head>
