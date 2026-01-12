@@ -359,22 +359,19 @@ body {
 .live-date {
   color: #4F364C;
 
-  /* EXACT iOS system font used by the app */
-  font-family: -apple-system, system-ui, BlinkMacSystemFont;
+  /* THIS is the key difference */
+  font-family: -apple-system, "SF Pro Text", system-ui;
 
   font-size: 24px;
-  font-weight: 600;              /* NOT 700 */
+  font-weight: 600;
   line-height: 1.1;
 
-  /* CRITICAL: number shaping */
+  /* number shaping exactly like iOS apps */
   font-variant-numeric: lining-nums tabular-nums;
   font-feature-settings: "lnum" 1, "tnum" 1;
 
-  /* ORIGINAL HAS ALMOST NO TRACKING */
-  letter-spacing: 0.02em;
-
-  /* prevents browser from faking bold/italic */
-  font-synthesis: none;
+  letter-spacing: 0.01em;   /* almost none */
+  font-synthesis: none;    /* prevents fake bold */
 }
 
 
