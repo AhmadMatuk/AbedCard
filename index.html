@@ -296,64 +296,72 @@ body {
 
     /* --- CLOCK & ANIMATION --- */
     /* tighter vertical spacing between the card and the clock/date */
-.live-clock-container {
-  margin-top: 12px;              /* was 35px */
+/* container spacing (time + date block) */
+.live-clock-container{
+  margin-top: 10px;          /* tighter than before */
   text-align: center;
 }
 
-/* CLOCK LINE (20 : 03 : 23) */
-.pagination {
+/* TIME ROW (e.g., 20 : 03 : 23) */
+.pagination{
   display: flex;
   align-items: center;
   justify-content: center;
 
-  gap: 16px;                     /* controls the “space between digits” */
-  margin-top: 6px;
-  margin-bottom: 8px;
+  /* original look: wide spacing between characters but not “huge gaps” */
+  gap: 18px;
 
-  height: 26px;                  /* slightly shorter */
+  margin-top: 6px;
+  margin-bottom: 6px;
+
+  height: 28px;              /* must stay aligned with digit height */
   overflow: hidden;
 
   color: #4F364C;
-  font-weight: 700;
-  font-size: 22px;               /* match original scale */
-  letter-spacing: 0px;           /* keep clean like the original */
+  font-weight: 600;          /* was 700 → closer to original */
+  font-size: 18px;           /* was too big */
+  letter-spacing: 0px;       /* keep 0 because spacing is done via widths */
 }
 
-/* keep colons visually like the original (not floating too high) */
-.colon {
-  margin-top: 0;                 /* was 2px */
-  font-weight: 700;
-  font-size: 22px;
-  line-height: 26px;
-  transform: translateY(1px);    /* tiny nudge to match screenshot */
-}
-
-/* each digit column */
-.digit-wrapper {
+/* each digit column: gives the “spaced digits” feel like the original */
+.digit-wrapper{
   display: flex;
   flex-direction: column;
   text-align: center;
+
   transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
-  width: 18px;                   /* gives the “spaced digit” look */
+
+  width: 22px;               /* KEY: creates the separated digits look */
 }
 
-/* each digit cell height MUST match your animation translate (-28px before) */
-.digit {
-  height: 28px;                  /* keep 28 so your animation stays correct */
+/* keep your animation working (your JS moves -28px) */
+.digit{
+  height: 28px;              /* DO NOT change */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+
+  line-height: 28px;
 }
 
-/* DATE LINE (09-01-2026) */
-.live-date {
+/* colons: slightly smaller and centered (original looks thinner) */
+.colon{
+  margin-top: 0;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  transform: translateY(1px);
+  opacity: 0.9;
+}
+
+/* DATE ROW (e.g., 09-01-2026) */
+.live-date{
   color: #4F364C;
-  font-size: 24px;               /* slightly smaller than your 26 */
-  font-weight: 700;
-  letter-spacing: 1px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; /* match original */
+  font-size: 20px;           /* smaller than your current */
+  font-weight: 600;          /* not heavy bold */
+  letter-spacing: 0.8px;     /* subtle like original */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
   </style>
